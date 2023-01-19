@@ -1,0 +1,71 @@
+﻿@page "SearchString"
+@model CarSpairParts.Pages.Car.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form>
+    <p>
+        Name->to search Here: <input type="text" asp-for="SearchString" />
+        engin->to filter Here: <input type="text" asp-for="FilterMethod" />
+        <input type="submit" value="load" />
+    </p>
+</form>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SpairPartsModel[0].name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpairPartsModel[0].engin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpairPartsModel[0].mirror)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpairPartsModel[0].cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpairPartsModel[0].color)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.SpairPartsModel) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.engin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mirror)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.color)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
